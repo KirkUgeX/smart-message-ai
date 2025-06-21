@@ -37,7 +37,7 @@ const WaitlistDialog = ({ children }: WaitlistDialogProps) => {
   setIsLoading(true);
 
   try {
-    const res = await fetch('/api/waitlist', {
+    const res = await fetch('/api/api/waitlist', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email }),
