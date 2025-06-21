@@ -23,44 +23,45 @@ const WaitlistDialog = ({ children }: WaitlistDialogProps) => {
   const { toast } = useToast();
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    if (!email) {
-      toast({
-        title: "Error",
-        description: "Please enter your email address",
-        variant: "destructive",
-      });
-      return;
-    }
+  e.preventDefault();
 
-    setIsLoading(true);
-    
-    try {
-      // Here you can add your email collection logic
-      // For example, send to your backend API, Zapier webhook, or email service
-      console.log("Email submitted:", email);
-      
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      toast({
-        title: "Success!",
-        description: "You've been added to the waitlist. We'll notify you when AI-T9 launches!",
-      });
-      
-      setEmail("");
-      setIsOpen(false);
-    } catch (error) {
-      toast({
-        title: "Error",
-        description: "Something went wrong. Please try again.",
-        variant: "destructive",
-      });
-    } finally {
-      setIsLoading(false);
-    }
-  };
+  if (!email) {
+    toast({
+      title: "Error",
+      description: "Please enter your email address",
+      variant: "destructive",
+    });
+    return;
+  }
+
+  setIsLoading(true);
+
+  try {
+    const res = await fetch('/api/waitlist', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email }),
+    });
+
+    if (!res.ok) throw new Error('Failed to add email');
+
+    toast({
+      title: "Success!",
+      description: "You've been added to the waitlist. We'll notify you when AI-T9 launches!",
+    });
+
+    setEmail("");
+    setIsOpen(false);
+  } catch (error) {
+    toast({
+      title: "Error",
+      description: "Something went wrong. Please try again.",
+      variant: "destructive",
+    });
+  } finally {
+    setIsLoading(false);
+  }
+};
 
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
