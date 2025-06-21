@@ -1,5 +1,6 @@
 
 import { Button } from "@/components/ui/button";
+import WaitlistDialog from "@/components/WaitlistDialog";
 
 const CTA = () => {
   return (
@@ -14,9 +15,11 @@ const CTA = () => {
           Join thousands of users who've already revolutionized their messaging with AI-T9.
         </p>
         
-        <Button className="bg-yellow-400 hover:bg-yellow-500 text-black font-bold px-12 py-4 text-xl">
-          👇 Join the waitlist
-        </Button>
+        <WaitlistDialog>
+          <Button className="bg-yellow-400 hover:bg-yellow-500 text-black font-bold px-12 py-4 text-xl">
+            👇 Join the waitlist
+          </Button>
+        </WaitlistDialog>
         
         <p className="text-sm text-gray-500 mt-6">
           No spam. Just updates on launch and early access.

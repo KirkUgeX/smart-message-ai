@@ -1,5 +1,6 @@
 
 import { Button } from "@/components/ui/button";
+import WaitlistDialog from "@/components/WaitlistDialog";
 
 const Header = () => {
   return (
@@ -13,9 +14,11 @@ const Header = () => {
           <a href="#demo" className="text-gray-600 hover:text-black transition-colors">
             Demo
           </a>
-          <Button className="bg-yellow-400 hover:bg-yellow-500 text-black font-medium">
-            Join Waitlist
-          </Button>
+          <WaitlistDialog>
+            <Button className="bg-yellow-400 hover:bg-yellow-500 text-black font-medium">
+              Join Waitlist
+            </Button>
+          </WaitlistDialog>
         </nav>
       </div>
     </header>

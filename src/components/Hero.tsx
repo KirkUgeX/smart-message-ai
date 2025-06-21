@@ -1,5 +1,6 @@
 
 import { Button } from "@/components/ui/button";
+import WaitlistDialog from "@/components/WaitlistDialog";
 
 const Hero = () => {
   return (
@@ -14,9 +15,11 @@ const Hero = () => {
           AI-T9 predicts meaning, not just words. Write faster. Answer smarter.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <Button className="bg-black hover:bg-gray-800 text-white px-8 py-3 text-lg">
-            👇 Join the waitlist
-          </Button>
+          <WaitlistDialog>
+            <Button className="bg-black hover:bg-gray-800 text-white px-8 py-3 text-lg">
+              👇 Join the waitlist
+            </Button>
+          </WaitlistDialog>
           <Button variant="outline" className="border-gray-300 px-8 py-3 text-lg">
             Watch Demo
           </Button>
